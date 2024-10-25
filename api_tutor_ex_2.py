@@ -6,7 +6,7 @@ import json  # Used for working with JSON data
 # Define constants for the script
 CHUNK_SIZE = 8192  # Size of chunks to read/write at a time
 XI_API_KEY = os.getenv("ELEVEN_API_KEY")  # Get the API key from the environment variable
-VOICE_ID = "nsQAxyXwUKBvqtEK9MfK"  # ID of the voice model to use
+VOICE_ID = "nsQAxyXwUKBvqtEK9MfK"  # ID of the voice model to use (Denzel - Casual Narration)
 TEXT_TO_SPEAK = "Hello! 你好! Hola! नमस्ते! Bonjour! こんにちは! مرحبا! 안녕하세요! Ciao! Cześć! Привіт! வணக்கம்!"  # Text you want to convert to speech
 OUTPUT_PATH = "output.mp3"  # Path to save the output audio file
 
