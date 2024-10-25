@@ -6,7 +6,6 @@ api_key = os.getenv("ELEVEN_API_KEY")
 if not api_key:
     raise ValueError("ELEVEN_API_KEY environment variable not set")
 
-print(api_key)
 client = ElevenLabs(api_key=api_key)
 
 audio = client.generate(
