@@ -10,7 +10,8 @@ client = ElevenLabs(api_key=api_key)
 
 audio = client.generate(
   text="Hello! 你好! Hola! नमस्ते! Bonjour! こんにちは! مرحبا! 안녕하세요! Ciao! Cześć! Привіт! வணக்கம்!",
-  voice="Brian",
+  # Changed voice to "Denzel - Casual Narration".  Typing the nane did not work, so I used the voice ID.
+  voice="nsQAxyXwUKBvqtEK9MfK",
   model="eleven_multilingual_v2"
 )
 play(audio)
