@@ -163,3 +163,9 @@ cython_debug/
 
 # Audio Files
 *.mp3
+
+# Data Files
+*.xlsx
+
+# Not sure what this is
+.DS_Store
