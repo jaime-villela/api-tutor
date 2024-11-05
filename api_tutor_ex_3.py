@@ -1,16 +1,13 @@
-
 import os
-import uuid
-from elevenlabs import VoiceSettings
-from elevenlabs.client import ElevenLabs
+import pandas as pd
+from elevenlabs import ElevenLabs, VoiceSettings
 
 ELEVENLABS_API_KEY = os.getenv("ELEVEN_API_KEY")
 client = ElevenLabs(
     api_key=ELEVENLABS_API_KEY,
 )
 
-
-def text_to_speech_file(text: str) -> str:
+def text_to_speech_file(text: str, save_file_path: str) -> None:
     # Calling the text_to_speech conversion API with detailed parameters
     response = client.text_to_speech.convert(
         voice_id="pNInz6obpgDQGcFmaJgB", # Adam pre-made voice
@@ -25,22 +22,21 @@ def text_to_speech_file(text: str) -> str:
         ),
     )
 
-    # uncomment the line below to play the audio back
-    # play(response)
-
-    # Generating a unique file name for the output MP3 file
-    save_file_path = f"{uuid.uuid4()}.mp3"
-
     # Writing the audio to a file
     with open(save_file_path, "wb") as f:
         for chunk in response:
             if chunk:
                 f.write(chunk)
 
-    print(f"{save_file_path}: A new audio file was saved successfully!")
+def process_spreadsheet(file_path: str) -> None:
+    # Read the spreadsheet
+    df = pd.read_excel(file_path, header=None)
 
-    # Return the path of the saved audio file
-    return save_file_path
+    # Iterate through each row in the spreadsheet
+    for index, row in df.iterrows():
+        text = row.iloc[0]
+        save_file_path = row.iloc[1]
+        text_to_speech_file(text, save_file_path)
 
-if __name__ == "__main__":
-    text_to_speech_file("Hello World")
+# Example usage
+process_spreadsheet("LinesofText.xlsx")
